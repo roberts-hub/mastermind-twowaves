@@ -23,7 +23,7 @@ document.querySelectorAll("[data-typeform]").forEach((el) => {
 // logos rápidos sobre negro, luego entra el sitio
 const loader = document.getElementById("loader");
 const glyphs = loader.querySelectorAll(".glyph");
-const PASO = 420; // ms por logo
+const PASO = 210; // ms por logo
 
 document.body.classList.add("cargando");
 
@@ -34,7 +34,7 @@ glyphs.forEach((g, i) => {
   }, i * PASO);
 });
 
-const totalCarga = glyphs.length * PASO + 380;
+const totalCarga = glyphs.length * PASO + 420;
 
 setTimeout(() => {
   loader.classList.add("fuera");
