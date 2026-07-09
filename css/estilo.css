@@ -217,12 +217,9 @@ body.cargando { overflow: hidden; }
   color: var(--hueso);
 }
 
-.hero-top-word {
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.35em;
-  color: var(--greige);
+.hero-top .isotipo {
+  width: 52px;
+  height: 52px;
 }
 
 .hero-center {
