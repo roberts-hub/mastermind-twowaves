@@ -65,25 +65,26 @@ body.cargando { overflow: hidden; }
   pointer-events: none;
 }
 
-/* las líneas se apilan: entra una, luego la de abajo, y todas se quedan */
+/* las líneas se apilan: entra una, luego la de abajo, y todas se quedan.
+   tipografía calcada del bloque de 982x: 28px / 700 / -0.05em / 110% */
 .intro-lineas {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 6px;
   width: 100%;
-  font-size: clamp(18px, 3.2vw, 28px);
+  font-size: clamp(21px, 3.2vw, 28px);
 }
 
 .intro-linea {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  column-gap: 0.35em;
+  column-gap: 0.26em;
   font-family: var(--sans);
   font-size: inherit;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.35;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
   color: var(--hueso);
 }
 
