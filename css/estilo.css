@@ -548,10 +548,13 @@ body.cargando { overflow: hidden; }
   color: var(--fondo);
 }
 
+/* en celular las tres fotos se quedan lado a lado, como en desktop */
 @media (max-width: 560px) {
-  .hosts { grid-template-columns: 1fr; gap: 44px; }
-  .host { text-align: center; }
-  .host-foto { max-width: 300px; margin-left: auto; margin-right: auto; }
+  .hosts { gap: 14px; }
+  .host h3 { font-size: 12px; letter-spacing: 0.04em; }
+  .host-rol, .host-ig { font-size: 8px; letter-spacing: 0.16em; }
+  .host-foto { margin-bottom: 14px; }
+  .host-foto-misterio svg { width: 26px; height: 26px; }
 }
 
 /* ══════════ SECCIÓN FINAL ══════════ */
