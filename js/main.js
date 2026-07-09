@@ -44,19 +44,16 @@ lineas.forEach((linea) => {
   });
 });
 
-// una línea a la vez: entra, se lee, se borra, entra la siguiente
+// las líneas entran una tras otra y se quedan apiladas
 let t = 300;
 lineas.forEach((linea, idx) => {
   const cascada = linea.children.length * 90 + 700; // palabras + asentado
   setTimeout(() => linea.classList.add("activa"), t);
+  t += cascada - 250; // la siguiente arranca cuando ésta casi asentó
 
-  if (idx < lineas.length - 1) {
-    const lectura = 1100; // tiempo para leerla
-    setTimeout(() => linea.classList.add("fuera"), t + cascada + lectura);
-    t += cascada + lectura + 450; // espera el borrado antes de la siguiente
-  } else {
-    // la última se queda; en cuanto termina, aparece ENTRAR
-    setTimeout(() => introBtn.classList.add("visible"), t + cascada + 200);
+  if (idx === lineas.length - 1) {
+    // con las tres en pantalla, aparece ENTRAR
+    setTimeout(() => introBtn.classList.add("visible"), t + 600);
   }
 });
 

@@ -65,19 +65,17 @@ body.cargando { overflow: hidden; }
   pointer-events: none;
 }
 
-/* las líneas viven encimadas: entra una, se borra, entra la siguiente */
+/* las líneas se apilan: entra una, luego la de abajo, y todas se quedan */
 .intro-lineas {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
-  min-height: 3.2em;
   font-size: clamp(18px, 3.2vw, 28px);
 }
 
 .intro-linea {
-  position: absolute;
-  inset: 0;
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
   column-gap: 0.35em;
@@ -87,12 +85,6 @@ body.cargando { overflow: hidden; }
   letter-spacing: 0.08em;
   line-height: 1.35;
   color: var(--hueso);
-  transition: opacity 0.5s ease, filter 0.5s ease;
-}
-
-.intro-linea.fuera {
-  opacity: 0;
-  filter: blur(7px);
 }
 
 /* cada palabra sube y se enfoca, en cascada (estilo 982x) */
@@ -233,9 +225,6 @@ body.cargando { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
-  .intro-lineas { min-height: auto; display: flex; flex-direction: column; gap: 14px; }
-  .intro-linea { position: static; }
-  .intro-linea.fuera { opacity: 1; filter: none; }
   .intro-linea .palabra,
   .intro-btn { animation: none; opacity: 1; transform: none; filter: none; pointer-events: auto; }
 }
