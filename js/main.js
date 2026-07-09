@@ -30,23 +30,35 @@ const PASO = 210; // ms por logo
 
 document.body.classList.add("cargando");
 
-// separa cada línea en palabras con delay en cascada
-let delay = 0.2;
-intro.querySelectorAll(".intro-linea").forEach((linea) => {
+// separa cada línea en palabras con delay en cascada (relativo a su línea)
+const lineas = [...intro.querySelectorAll(".intro-linea")];
+lineas.forEach((linea) => {
   const palabras = linea.textContent.trim().split(/\s+/);
   linea.textContent = "";
   palabras.forEach((palabra, i) => {
     const span = document.createElement("span");
     span.className = "palabra";
     span.textContent = palabra;
-    span.style.setProperty("--d", delay + "s");
-    delay += 0.09;
+    span.style.setProperty("--d", i * 0.09 + "s");
     linea.appendChild(span);
-    if (i < palabras.length - 1) linea.appendChild(document.createTextNode(" "));
   });
-  delay += 0.35; // pausa entre líneas
 });
-introBtn.style.setProperty("--d", delay + 0.3 + "s");
+
+// una línea a la vez: entra, se lee, se borra, entra la siguiente
+let t = 300;
+lineas.forEach((linea, idx) => {
+  const cascada = linea.children.length * 90 + 700; // palabras + asentado
+  setTimeout(() => linea.classList.add("activa"), t);
+
+  if (idx < lineas.length - 1) {
+    const lectura = 1100; // tiempo para leerla
+    setTimeout(() => linea.classList.add("fuera"), t + cascada + lectura);
+    t += cascada + lectura + 450; // espera el borrado antes de la siguiente
+  } else {
+    // la última se queda; en cuanto termina, aparece ENTRAR
+    setTimeout(() => introBtn.classList.add("visible"), t + cascada + 200);
+  }
+});
 
 // clic en ENTRAR → logos → sitio
 introBtn.addEventListener("click", () => {

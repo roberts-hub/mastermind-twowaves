@@ -65,13 +65,34 @@ body.cargando { overflow: hidden; }
   pointer-events: none;
 }
 
+/* las líneas viven encimadas: entra una, se borra, entra la siguiente */
+.intro-lineas {
+  position: relative;
+  width: 100%;
+  min-height: 3.2em;
+  font-size: clamp(18px, 3.2vw, 28px);
+}
+
 .intro-linea {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 0.35em;
   font-family: var(--sans);
-  font-size: clamp(15px, 2.6vw, 22px);
+  font-size: inherit;
   font-weight: 700;
   letter-spacing: 0.08em;
-  line-height: 1.4;
+  line-height: 1.35;
   color: var(--hueso);
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.intro-linea.fuera {
+  opacity: 0;
+  filter: blur(7px);
 }
 
 /* cada palabra sube y se enfoca, en cascada (estilo 982x) */
@@ -80,6 +101,9 @@ body.cargando { overflow: hidden; }
   opacity: 0;
   transform: translateY(0.7em);
   filter: blur(8px);
+}
+
+.intro-linea.activa .palabra {
   animation: palabraEntra 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: var(--d);
 }
@@ -89,7 +113,7 @@ body.cargando { overflow: hidden; }
 }
 
 .intro-btn {
-  margin-top: 38px;
+  margin-top: 44px;
   display: inline-flex;
   align-items: center;
   gap: 16px;
@@ -105,9 +129,14 @@ body.cargando { overflow: hidden; }
   cursor: pointer;
   opacity: 0;
   transform: translateY(10px);
+  filter: blur(8px);
+  pointer-events: none;
   transition: border-color 0.4s ease, letter-spacing 0.4s ease;
+}
+
+.intro-btn.visible {
+  pointer-events: auto;
   animation: palabraEntra 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: var(--d, 2.6s);
 }
 
 .intro-btn .flecha {
@@ -204,8 +233,11 @@ body.cargando { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
+  .intro-lineas { min-height: auto; display: flex; flex-direction: column; gap: 14px; }
+  .intro-linea { position: static; }
+  .intro-linea.fuera { opacity: 1; filter: none; }
   .intro-linea .palabra,
-  .intro-btn { animation: none; opacity: 1; transform: none; filter: none; }
+  .intro-btn { animation: none; opacity: 1; transform: none; filter: none; pointer-events: auto; }
 }
 
 /* ══════════ HERO ══════════ */
