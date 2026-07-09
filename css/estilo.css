@@ -172,18 +172,36 @@ body.cargando { overflow: hidden; }
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse 90% 55% at 78% 108%, rgba(231, 226, 214, 0.30), transparent 60%),
-    radial-gradient(ellipse 55% 40% at 12% 96%, rgba(231, 226, 214, 0.10), transparent 65%),
-    radial-gradient(ellipse 70% 50% at 55% 30%, rgba(231, 226, 214, 0.035), transparent 70%),
-    linear-gradient(180deg, #060606 0%, #0b0b0a 45%, #12110f 100%);
-  filter: contrast(1.05);
+    /* rayado vertical sutil, como luz corrida en la foto */
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 3px),
+    /* resplandor blanco principal, abajo a la derecha */
+    radial-gradient(ellipse 72% 62% at 70% 114%, rgba(250, 248, 244, 0.78), rgba(248, 246, 241, 0.22) 48%, transparent 70%),
+    /* masa gris difusa, abajo a la izquierda */
+    radial-gradient(ellipse 50% 42% at 16% 102%, rgba(220, 216, 206, 0.16), transparent 65%),
+    /* neblina gris a media altura, lado izquierdo */
+    radial-gradient(ellipse 45% 30% at 25% 66%, rgba(200, 196, 188, 0.055), transparent 70%),
+    linear-gradient(180deg, #030303 0%, #070707 40%, #0c0b0a 100%);
+  filter: contrast(1.08);
+}
+
+/* vetas diagonales tenues en el tercio superior */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(118deg, transparent 40%, rgba(231, 226, 214, 0.05) 46%, transparent 51%),
+    linear-gradient(112deg, transparent 26%, rgba(231, 226, 214, 0.035) 30%, transparent 35%),
+    linear-gradient(125deg, transparent 55%, rgba(231, 226, 214, 0.025) 58%, transparent 62%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 30%, transparent 55%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 30%, transparent 55%);
 }
 
 .hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 120% 90% at 50% 45%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+  background: radial-gradient(ellipse 130% 95% at 50% 38%, transparent 45%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .hero-top {
