@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APLICAR — MASTERMIND Two Waves Films</title>
+  <meta name="description" content="Aplicación al mastermind de Two Waves Films. 20 lugares." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/estilo.css" />
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230e0e0d"/><path d="M30 32h28v10H49v34H39V42H30z" fill="%23e7e2d6"/><circle cx="68" cy="36" r="5" fill="%23e7e2d6"/></svg>' />
+</head>
+<body class="pagina-aplicar">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="aplicar">
+    <a class="volver reveal visto" href="index.html">← VOLVER</a>
+
+    <svg class="isotipo reveal visto" viewBox="0 0 100 100" fill="none" aria-label="Two Waves">
+      <path d="M26 30h32v11H45v39H33V41H26z" fill="currentColor"/>
+      <circle cx="70" cy="35" r="5.5" fill="currentColor"/>
+    </svg>
+
+    <p class="etiqueta centrada reveal visto">( APLICACIÓN — MASTERMIND )</p>
+    <h1 class="titulo centrado reveal visto">20 LUGARES.</h1>
+    <p class="aplicar-intro reveal visto">
+      Sin precio publicado. Revisamos cada aplicación
+      y te contactamos para una llamada.
+    </p>
+
+    <form id="form-aplicar" class="form reveal visto" novalidate>
+      <div class="campo">
+        <label for="nombre">NOMBRE COMPLETO</label>
+        <input type="text" id="nombre" name="nombre" required autocomplete="name" />
+      </div>
+      <div class="campo">
+        <label for="correo">CORREO</label>
+        <input type="email" id="correo" name="correo" required autocomplete="email" />
+      </div>
+      <div class="campo">
+        <label for="whatsapp">WHATSAPP</label>
+        <input type="tel" id="whatsapp" name="whatsapp" required autocomplete="tel" />
+      </div>
+      <div class="campo">
+        <label for="instagram">INSTAGRAM / PORTAFOLIO</label>
+        <input type="text" id="instagram" name="instagram" required />
+      </div>
+      <div class="campo">
+        <label for="negocio">¿DÓNDE ESTÁ TU NEGOCIO HOY Y A DÓNDE QUIERES LLEVARLO?</label>
+        <textarea id="negocio" name="negocio" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-pill grande">ENVIAR APLICACIÓN</button>
+      <p class="nota" id="form-estado" role="status"></p>
+    </form>
+
+    <div id="form-exito" class="exito" hidden>
+      <svg class="destello" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+        <path d="M50 8 C51.5 34 52 42 66 50 C52 58 51.5 66 50 92 C48.5 66 48 58 34 50 C48 42 48.5 34 50 8 Z"/>
+      </svg>
+      <h2 class="titulo centrado">RECIBIDO.</h2>
+      <p class="aplicar-intro">Tu aplicación está en la lista. Si haces sentido para el cuarto, te llega una llamada.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-firma">TWO WAVES FILMS — GUADALAJARA, MX — EST. 2021</p>
+  </footer>
+
+  <script src="js/form.js"></script>
+</body>
+</html>

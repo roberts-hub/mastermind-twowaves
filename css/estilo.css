@@ -427,6 +427,121 @@ body.cargando { overflow: hidden; }
   margin-bottom: 40px;
 }
 
+/* ══════════ PÁGINA APLICAR ══════════ */
+
+.aplicar {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 56px 24px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.volver {
+  align-self: flex-start;
+  margin-bottom: 56px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  color: var(--greige);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.volver:hover { color: var(--hueso); }
+
+.aplicar .isotipo { margin-bottom: 40px; }
+
+.etiqueta.centrada { text-align: center; }
+
+.titulo.centrado { text-align: center; }
+
+.aplicar-intro {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: var(--greige);
+  max-width: 380px;
+  margin-bottom: 64px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: left;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campo label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  color: var(--greige);
+}
+
+.campo input,
+.campo textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(231, 226, 214, 0.22);
+  padding: 10px 2px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--hueso);
+  border-radius: 0;
+  resize: none;
+  transition: border-color 0.4s ease;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  outline: none;
+  border-bottom-color: var(--hueso);
+}
+
+.form .btn-pill {
+  align-self: center;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.form .btn-pill:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.form .nota {
+  margin-top: 8px;
+  text-align: center;
+  min-height: 1em;
+}
+
+.exito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.exito .destello { margin-bottom: 32px; }
+
+.exito .aplicar-intro { margin-bottom: 0; }
+
+.pagina-aplicar .footer { border-top: none; }
+
 /* ══════════ FOOTER ══════════ */
 
 .footer {

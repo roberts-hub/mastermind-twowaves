@@ -14,8 +14,8 @@ document.querySelectorAll("[data-typeform]").forEach((el) => {
     el.target = "_blank";
     el.rel = "noopener";
   } else {
-    // fallback mientras no exista el form: correo directo
-    el.href = "mailto:contacto@twowaves.mx?subject=APLICACI%C3%93N%20MASTERMIND";
+    // sin Typeform: formulario nativo de la página
+    el.href = "aplicar.html";
   }
 });
 
