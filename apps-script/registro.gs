@@ -13,7 +13,7 @@
  * 6. Pega esa URL en js/form.js → SHEETS_ENDPOINT.
  */
 
-var COLUMNAS = ["fecha", "nombre", "correo", "whatsapp", "instagram", "negocio"];
+var COLUMNAS = ["fecha", "nombre", "correo", "lada", "celular", "instagram", "portafolio", "negocio", "tema"];
 
 function doPost(e) {
   var hoja = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
