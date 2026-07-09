@@ -91,3 +91,4 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll("body > :not(.hero) .reveal").forEach((el) => observer.observe(el));
+.
