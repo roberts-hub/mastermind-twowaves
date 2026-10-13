@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LISTA DE ESPERA — Two Waves Films</title>
+  <meta name="description" content="Acceso anticipado al próximo lanzamiento de Two Waves Films. Déjanos tus datos y sé de los primeros en enterarte." />
+  <meta property="og:title" content="Acceso anticipado — Two Waves Films" />
+  <meta property="og:description" content="Algo grande viene. Déjanos tus datos y entra a la lista antes que nadie." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/estilo.css" />
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230e0e0d"/><path d="M31 34h28.5v6.2H49v26.5h-7.7V40.2H31z" fill="%23eae0c5"/><circle cx="69.5" cy="37" r="4" fill="%23eae0c5"/></svg>' />
+
+  <!-- Estilos propios de la lista de espera (una sola pantalla, form corto) -->
+  <style>
+    .pagina-lista { display: flex; flex-direction: column; min-height: 100svh; }
+    .pagina-lista::before {
+      content: ""; position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(ellipse 80% 55% at 50% -5%, rgba(234, 224, 197, 0.06), transparent 60%),
+        radial-gradient(ellipse 60% 45% at 50% 108%, rgba(234, 224, 197, 0.04), transparent 62%),
+        var(--fondo);
+    }
+    .lista {
+      flex: 1; max-width: 470px; margin: 0 auto;
+      padding: 72px 24px 48px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .lista .isotipo { width: 46px; height: 46px; margin-bottom: 40px; }
+    .lista-intro {
+      font-family: var(--sans); font-size: 14px; font-weight: 300;
+      line-height: 1.9; letter-spacing: 0.02em; color: var(--greige);
+      max-width: 400px; margin-bottom: 52px;
+    }
+    .lista-form { width: 100%; display: flex; flex-direction: column; gap: 28px; text-align: left; }
+    .lista-campo { display: flex; flex-direction: column; gap: 10px; }
+    .lista-campo label {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em; color: var(--greige);
+    }
+    .lista-campo label .op { color: rgba(176, 165, 149, 0.5); letter-spacing: 0.18em; }
+    .lista-form input {
+      background: transparent; border: none;
+      border-bottom: 1px solid rgba(234, 224, 197, 0.22);
+      padding: 11px 2px; font-family: var(--sans); font-size: 17px; font-weight: 300;
+      letter-spacing: 0.02em; color: var(--hueso); border-radius: 0;
+      transition: border-color 0.4s ease;
+    }
+    .lista-form input::placeholder { color: rgba(176, 165, 149, 0.38); }
+    .lista-form input:focus { outline: none; border-bottom-color: var(--hueso); }
+    .lista-form input.invalido { border-bottom-color: var(--rojo); }
+    .lista-form .btn-linea { margin-top: 18px; align-self: center; }
+    .lista-form .nota { margin-top: 2px; text-align: center; min-height: 1em; }
+  </style>
+</head>
+<body class="pagina-lista">
+
+  <!-- ══════════ GRANO ══════════ -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="lista">
+    <svg class="isotipo reveal" data-delay="1" viewBox="0 0 100 100" fill="none" aria-label="Two Waves">
+      <path d="M31 34h28.5v6.2H49v26.5h-7.7V40.2H31z" fill="currentColor"/>
+      <circle cx="69.5" cy="37" r="4" fill="currentColor"/>
+    </svg>
+
+    <p class="etiqueta centrada reveal" data-delay="2">( ACCESO ANTICIPADO )</p>
+    <h1 class="titulo centrado reveal" data-delay="3">ALGO GRANDE<br />VIENE PRONTO.</h1>
+    <p class="lista-intro reveal" data-delay="4">
+      Estamos por abrir un nuevo lanzamiento de Two Waves Films.
+      Déjanos tus datos y serás de los primeros en enterarte —con
+      acceso prioritario antes que nadie.
+    </p>
+
+    <form id="form-lista" class="lista-form reveal" data-delay="5" novalidate>
+      <div class="lista-campo">
+        <label for="nombre">NOMBRE</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required />
+      </div>
+      <div class="lista-campo">
+        <label for="correo">CORREO</label>
+        <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email" required />
+      </div>
+      <div class="lista-campo">
+        <label for="whatsapp">WHATSAPP <span class="op">— OPCIONAL</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="+52 33 0000 0000" autocomplete="tel" />
+      </div>
+
+      <input type="hidden" name="origen" value="lista-espera" />
+
+      <button type="submit" class="btn-linea grande">QUIERO ENTRAR <span class="flecha">→</span></button>
+      <p class="nota" id="form-estado"></p>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <svg class="isotipo" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <path d="M31 34h28.5v6.2H49v26.5h-7.7V40.2H31z" fill="currentColor"/>
+      <circle cx="69.5" cy="37" r="4" fill="currentColor"/>
+    </svg>
+    <div class="footer-links">
+      <a href="mailto:contacto@twowaves.mx">CONTACTO@TWOWAVES.MX</a>
+    </div>
+    <p class="footer-firma">TWO WAVES FILMS — GUADALAJARA, MX — EST. 2021</p>
+  </footer>
+
+  <!-- ══════════ POP-UP DE GRACIAS ══════════ -->
+  <div class="modal-gracias" id="modal-gracias" hidden>
+    <div class="modal-inner">
+      <div class="modal-glyphs">
+        <svg class="glyph" viewBox="0 0 100 100" fill="none">
+          <path d="M31 34h28.5v6.2H49v26.5h-7.7V40.2H31z" fill="currentColor"/>
+          <circle cx="69.5" cy="37" r="4" fill="currentColor"/>
+        </svg>
+        <svg class="glyph" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="36" r="22" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="50" cy="64" r="22" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <svg class="glyph" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M50 8 C51.5 34 52 42 66 50 C52 58 51.5 66 50 92 C48.5 66 48 58 34 50 C48 42 48.5 34 50 8 Z"/>
+        </svg>
+        <svg class="glyph" viewBox="0 0 100 100" fill="none">
+          <path d="M40 32 a24 24 0 0 0 0 36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M60 32 a24 24 0 0 1 0 36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="50" cy="24" r="3" fill="currentColor"/>
+        </svg>
+      </div>
+      <h2 class="titulo">YA ESTÁS<br />EN LA LISTA.</h2>
+      <p class="aplicar-intro">
+        Gracias. Te avisaremos directo en cuanto abramos el lanzamiento
+        —tendrás acceso prioritario.
+      </p>
+      <a class="volver-final" href="https://www.instagram.com/twowaves.mx/" target="_blank" rel="noopener">SÍGUENOS EN INSTAGRAM →</a>
+    </div>
+  </div>
+
+  <script src="js/lista.js"></script>
+</body>
+</html>
