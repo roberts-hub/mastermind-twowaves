@@ -7,8 +7,15 @@
    ═══════════════════════════════════════════════ */
 
 (function () {
-  // Pega aquí la URL del web app de Apps Script (termina en /exec)
+  // OPCIÓN A (recomendada para Google Sheets): pega aquí la URL del web app
+  // de Apps Script (termina en /exec). Ver apps-script/lista.gs. Si está
+  // puesta, tiene prioridad y los datos caen a tu hoja.
   const SHEETS_ENDPOINT = "";
+
+  // OPCIÓN B (activa por default, sin cuenta): FormSubmit. Cada envío llega
+  // como correo a esta dirección. Requiere confirmar UNA vez el primer envío
+  // (FormSubmit manda un correo de activación con un botón "Activate Form").
+  const FORMSUBMIT_EMAIL = "contacto@twowaves.mx";
 
   const form = document.getElementById("form-lista");
   const estado = document.getElementById("form-estado");
@@ -59,29 +66,29 @@
     boton.disabled = true;
     estado.textContent = "ENVIANDO…";
 
-    const datos = new URLSearchParams(new FormData(form));
-    datos.append("fecha", new Date().toISOString());
-
     try {
-      if (!SHEETS_ENDPOINT) {
-        // Sin endpoint todavía: cae a correo con los datos precargados.
-        const cuerpo = [...new FormData(form).entries()]
-          .map(([k, v]) => `${k.toUpperCase()}: ${v}`)
-          .join("\n");
+      // ── OPCIÓN A: Google Sheets vía Apps Script ──
+      if (SHEETS_ENDPOINT) {
+        const datos = new URLSearchParams(new FormData(form));
+        datos.append("fecha", new Date().toISOString());
+        await fetch(SHEETS_ENDPOINT, { method: "POST", mode: "no-cors", body: datos });
         abrirGracias();
-        setTimeout(() => {
-          location.href =
-            "mailto:contacto@twowaves.mx?subject=NUEVO%20INTERESADO%20-%20LISTA%20DE%20ESPERA&body=" +
-            encodeURIComponent(cuerpo);
-        }, 400);
         return;
       }
 
-      await fetch(SHEETS_ENDPOINT, {
+      // ── OPCIÓN B: FormSubmit (llega por correo, sin cuenta) ──
+      const fd = new FormData(form);
+      fd.append("fecha", new Date().toISOString());
+      fd.append("_subject", "Nuevo interesado — Lista de espera (Two Waves)");
+      fd.append("_template", "table");
+      fd.append("_captcha", "false");
+
+      const resp = await fetch("https://formsubmit.co/ajax/" + FORMSUBMIT_EMAIL, {
         method: "POST",
-        mode: "no-cors",
-        body: datos,
+        headers: { Accept: "application/json" },
+        body: fd,
       });
+      if (!resp.ok) throw new Error("http " + resp.status);
 
       abrirGracias();
     } catch {
