@@ -22,7 +22,7 @@
  */
 
 // correos que reciben el aviso de cada nuevo interesado
-var NOTIFICAR = ["contacto@twowaves.mx"];
+var NOTIFICAR = ["info@twowaves.mx"];
 
 // columnas de la base de datos (mismo orden en el Sheet)
 var COLUMNAS = ["fecha", "nombre", "correo", "whatsapp", "origen"];

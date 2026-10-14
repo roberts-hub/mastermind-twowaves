@@ -15,7 +15,7 @@
   // OPCIÓN B (activa por default, sin cuenta): FormSubmit. Cada envío llega
   // como correo a esta dirección. Requiere confirmar UNA vez el primer envío
   // (FormSubmit manda un correo de activación con un botón "Activate Form").
-  const FORMSUBMIT_EMAIL = "contacto@twowaves.mx";
+  const FORMSUBMIT_EMAIL = "info@twowaves.mx";
 
   const form = document.getElementById("form-lista");
   const estado = document.getElementById("form-estado");
