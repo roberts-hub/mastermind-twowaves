@@ -15,7 +15,8 @@
   // OPCIÓN B (activa por default, sin cuenta): FormSubmit. Cada envío llega
   // como correo a esta dirección. Requiere confirmar UNA vez el primer envío
   // (FormSubmit manda un correo de activación con un botón "Activate Form").
-  const FORMSUBMIT_EMAIL = "info@twowaves.mx";
+  const FORMSUBMIT_EMAIL = "roberto@arechederra.com"; // ya activado (verificable)
+  const FORMSUBMIT_CC = "info@twowaves.mx";           // copia al correo del negocio
 
   const form = document.getElementById("form-lista");
   const estado = document.getElementById("form-estado");
@@ -82,6 +83,7 @@
       fd.append("_subject", "Nuevo interesado — Lista de espera (Two Waves)");
       fd.append("_template", "table");
       fd.append("_captcha", "false");
+      if (typeof FORMSUBMIT_CC === "string" && FORMSUBMIT_CC) fd.append("_cc", FORMSUBMIT_CC);
 
       const resp = await fetch("https://formsubmit.co/ajax/" + FORMSUBMIT_EMAIL, {
         method: "POST",
